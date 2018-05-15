@@ -11,11 +11,37 @@ namespace LinkedList1
         static void Main(string[] args)
         {
             // 1. 
-            Console.WriteLine("Write an algorithm to determine if a LinkedList is a palindrome.");
+            Console.WriteLine("1) Write an algorithm to determine if a LinkedList is a palindrome.");
             // Q: input = LinkedList? output = boolean? singly-linked, doubly-linked, or circular? How to handle null or empty or 1 node? type of ll = char? ok to modify the ll in the process?
             string palindrome1 = "abccba";
             var ll = new LinkedList<char>(palindrome1);
             bool isPalindrome = IsPalindrome(ll);
+            Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
+
+            palindrome1 = "a";
+            var mm = new LinkedList<char>(palindrome1);
+            isPalindrome = IsPalindrome(mm);
+            Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
+
+            palindrome1 = string.Empty;
+            var nn = new LinkedList<char>(palindrome1);
+            isPalindrome = IsPalindrome(nn);
+            Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
+
+            var oo = new LinkedList<char>();
+            oo = null;
+            isPalindrome = IsPalindrome(oo);
+            Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
+
+            palindrome1 = "abc";
+            var pp = new LinkedList<char>(palindrome1);
+            isPalindrome = IsPalindrome(pp);
+            Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
+
+
+            palindrome1 = "abca";
+            var qq = new LinkedList<char>(palindrome1);
+            isPalindrome = IsPalindrome(qq);
             Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
 
             Console.ReadKey();
