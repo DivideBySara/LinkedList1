@@ -44,7 +44,41 @@ namespace LinkedList1
             isPalindrome = IsPalindrome(qq);
             Console.WriteLine($"\nThe LinkedList containing {palindrome1} is a palindrome: {isPalindrome}");
 
+            // 4.
+            Console.WriteLine("\nWrite an algorithm to removed duplicates from an unsorted linked list. Follow up: What if a temporary buffer is not allowed?");
+            // Q's: singly-, doubly-, or circular linked list? input = doubly-linked list, output = same list with dup's removed? Ok if it's sorted at the end? are the duplicates in any kind of sequence like unordered char's with dup's?
+            // one solution would use a dictionary to store keys = data, values = number of occurences
+            // Maybe should use a list for keys. first entry in list is num of occurrences, remaining entries contain node indexes for faster removal?
+            // another solution would be to sort the list first. This would alter the list, but so will removing dups.
+
+            string unorderedChars = "cbacba";
+            var rr = new LinkedList<char>(unorderedChars);
+            LinkedList<char> noDups = RemoveDups(rr);
+            Console.WriteLine("\nThe LinkedList with dups:");
+            Print(rr);
+            Console.WriteLine("\nThe LinkedList without dups:");
+
+
             Console.ReadKey();
+        }
+
+        private static LinkedList<char> RemoveDups(LinkedList<char> ll)
+        {
+            // handle edge cases
+
+            // sort the list
+
+            // iterate through the ll to remove dups
+
+            // return the new ll
+        }
+
+        private static void Print(LinkedList<char> ll)
+        {
+            foreach (var node in ll)
+            {
+                Console.Write($"{node} ");
+            }
         }
 
         /// <summary>
