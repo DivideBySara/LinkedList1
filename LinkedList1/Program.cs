@@ -99,10 +99,20 @@ namespace LinkedList1
             PrintNodes(head);
 
             // #5
-            Console.WriteLine("\n#5 Implement an algorithm to find the kth to the last element of a singly linked list");
+            Console.WriteLine("\n\n#5 Implement an algorithm to find the kth to the last element of a singly linked list");
             // Q's: I can write my own Node class, right? Input a linked list of char's and int k? Output a linked list of char's? Do you want me to handle edge cases?
-            string kthToTheLast = GetKthToTheLastElement(head, 2);
 
+            int kthToTheLast = 2;
+            string kthToTheLastString = GetKthToTheLastElement(head, kthToTheLast);
+            Console.WriteLine($"\nThe {kthToTheLast}th/rd/nd to the last element contains {kthToTheLastString}");
+
+            kthToTheLast = 1;
+            kthToTheLastString = GetKthToTheLastElement(head, kthToTheLast);
+            Console.WriteLine($"\nThe {kthToTheLast}th/rd/nd to the last element contains {kthToTheLastString}");
+
+            kthToTheLast = 3;
+            kthToTheLastString = GetKthToTheLastElement(head, kthToTheLast);
+            Console.WriteLine($"\nThe {kthToTheLast}th/rd/nd to the last element contains {kthToTheLastString}");
 
             Console.ReadKey();
         }
@@ -112,9 +122,10 @@ namespace LinkedList1
             // handle edge cases: null, k > size of list
 
             // instantiate variables
-            Node<string> kthToTheLast = new Node<string>(string.Empty);
+            Node<string> kthToTheLastNode = new Node<string>(string.Empty);
             Node<string> current = head;
             int nodeCounter = 1;
+            int kthToTheLastIndex = 0;
 
             // find size of list
             while (current.Next != null)
@@ -125,9 +136,16 @@ namespace LinkedList1
             ++nodeCounter;
 
             // find kth to the last element.value
+            kthToTheLastIndex = nodeCounter - k - 1;
+            kthToTheLastNode = head;
+
+            for (int i = 0; i < kthToTheLastIndex; i++)
+            {
+                kthToTheLastNode = kthToTheLastNode.Next;
+            }
 
             // return kthToTheLast.Value
-            return kthToTheLast.Value;
+            return kthToTheLastNode.Value;
         }
 
         private static void PrintNodes(Node<string> head)
