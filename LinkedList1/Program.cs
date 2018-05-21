@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace LinkedList1
 {
+    public class Node<T> where T : class
+    {
+        public Node<T> Next { get; set; }
+        public T Value { get; set; }
+
+        public Node(T value)
+        {
+            Next = null;
+            Value = value;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -50,27 +62,40 @@ namespace LinkedList1
             // one solution would use a dictionary to store keys = data, values = number of occurences
             // Maybe should use a list for keys. first entry in list is num of occurrences, remaining entries contain node indexes for faster removal?
             // another solution would be to sort the list first. This would alter the list, but so will removing dups.
+            
+            var head = new Node<string>("c");
+            head.Next = new Node<string>("b");
+            head.Next.Next = new Node<string>("a");
 
-            string unorderedChars = "cbacba";
-            var rr = new LinkedList<char>(unorderedChars);
-            LinkedList<char> noDups = RemoveDups(rr);
-            Console.WriteLine("\nThe LinkedList with dups:");
-            Print(rr);
-            Console.WriteLine("\nThe LinkedList without dups:");
+            Console.WriteLine("\nThe linked list with dups:");
+            PrintNodes(head);
 
 
             Console.ReadKey();
         }
 
-        private static LinkedList<char> RemoveDups(LinkedList<char> ll)
+        private static void PrintNodes(Node<string> head)
         {
-            // handle edge cases
+            Node<string> current = head;
 
-            // sort the list
+            do
+            {
+                Console.Write($"{current.Value} ");
+                current = current.Next;
 
-            // iterate through the ll to remove dups
+            } while (current.Next != null);
 
-            // return the new ll
+            Console.Write(current.Value);
+        }
+
+        private static Node<string> RemoveDups(Node<string> head)
+        {
+            while (head.Next != null && head.Next.Next != null)
+            {
+
+            }
+
+            return head;
         }
 
         private static void Print(LinkedList<char> ll)
