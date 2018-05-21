@@ -69,6 +69,34 @@ namespace LinkedList1
 
             Console.WriteLine("\nThe linked list with dups:");
             PrintNodes(head);
+            RemoveDups(head);
+            Console.WriteLine("\nThe linked list without dups:");
+            PrintNodes(head);
+
+            head.Next.Next.Next = new Node<string>("c");
+
+            Console.WriteLine("\nThe linked list with dups:");
+            PrintNodes(head);
+            RemoveDups(head);
+            Console.WriteLine("\nThe linked list without dups:");
+            PrintNodes(head);
+
+            head.Next.Next.Next = new Node<string>("b");
+            head.Next.Next.Next.Next = new Node<string>("d");
+
+            Console.WriteLine("\nThe linked list with dups:");
+            PrintNodes(head);
+            RemoveDups(head);
+            Console.WriteLine("\nThe linked list without dups:");
+            PrintNodes(head);
+
+            head.Next.Next.Next.Next = new Node<string>("d");
+
+            Console.WriteLine("\nThe linked list with dups:");
+            PrintNodes(head);
+            RemoveDups(head);
+            Console.WriteLine("\nThe linked list without dups:");
+            PrintNodes(head);
 
 
             Console.ReadKey();
@@ -88,14 +116,42 @@ namespace LinkedList1
             Console.Write(current.Value);
         }
 
-        private static Node<string> RemoveDups(Node<string> head)
+        private static void RemoveDups(Node<string> head)
         {
-            while (head.Next != null && head.Next.Next != null)
+            // edge case
+            if (head == null)
             {
-
+                return;
             }
 
-            return head;
+            // create pointers
+            Node<string> previous = head;
+            Node<string> current = previous.Next;
+
+            // outer while loop 1st checks for null in Next
+            while (current != null)
+            {
+                // create pointer that gets compared to first pointer
+                Node<string> runner = head;
+                while (runner != current)
+                {
+                    if (current.Value == runner.Value) // found a dup!
+                    {
+                        // remove dup
+                        Node<string> temp = current.Next;
+                        previous.Next = temp;
+                        current = temp;
+                        break;
+                    }
+                    runner = runner.Next;
+                }
+
+                if (runner == current)
+                {
+                    previous = current;
+                    current = current.Next;
+                }
+            }
         }
 
         private static void Print(LinkedList<char> ll)
