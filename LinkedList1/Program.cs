@@ -10,7 +10,7 @@ namespace LinkedList1
     {
         public Node<T> Next { get; set; }
         public T Value { get; set; }
-
+        
         public Node(T value)
         {
             Next = null;
@@ -98,8 +98,36 @@ namespace LinkedList1
             Console.WriteLine("\nThe linked list without dups:");
             PrintNodes(head);
 
+            // #5
+            Console.WriteLine("\n#5 Implement an algorithm to find the kth to the last element of a singly linked list");
+            // Q's: I can write my own Node class, right? Input a linked list of char's and int k? Output a linked list of char's? Do you want me to handle edge cases?
+            string kthToTheLast = GetKthToTheLastElement(head, 2);
+
 
             Console.ReadKey();
+        }
+
+        private static string GetKthToTheLastElement(Node<string> head, int k)
+        {
+            // handle edge cases: null, k > size of list
+
+            // instantiate variables
+            Node<string> kthToTheLast = new Node<string>(string.Empty);
+            Node<string> current = head;
+            int nodeCounter = 1;
+
+            // find size of list
+            while (current.Next != null)
+            {
+                ++nodeCounter;
+                current = current.Next;
+            }
+            ++nodeCounter;
+
+            // find kth to the last element.value
+
+            // return kthToTheLast.Value
+            return kthToTheLast.Value;
         }
 
         private static void PrintNodes(Node<string> head)
